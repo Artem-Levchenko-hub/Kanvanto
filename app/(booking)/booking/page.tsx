@@ -71,7 +71,7 @@ export default async function BookingPage({ searchParams }: PageProps) {
     : undefined;
 
   return (
-    <main className="mx-auto max-w-3xl px-4 sm:px-6 py-10 lg:py-14">
+    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-8 lg:py-12">
       <BookingWizard
         services={services}
         branches={branchesData}
@@ -80,7 +80,7 @@ export default async function BookingPage({ searchParams }: PageProps) {
         userInfo={userInfo}
         presetServiceSlug={params.service}
       />
-    </main>
+    </div>
   );
 }
 

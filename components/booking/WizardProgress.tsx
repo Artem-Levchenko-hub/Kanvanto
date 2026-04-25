@@ -15,61 +15,69 @@ const STEP_LABELS: Record<WizardStep, string> = {
 
 export function WizardProgress({ current }: { current: WizardStep }) {
   const currentIdx = getStepIndex(current);
-  const progress = ((currentIdx + 1) / STEP_ORDER.length) * 100;
+  const total = STEP_ORDER.length;
+  const progressPct = ((currentIdx + 1) / total) * 100;
 
   return (
     <div className="w-full">
-      {/* Mobile: simple progress bar with step counter */}
-      <div className="lg:hidden">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-caption text-chrome uppercase tracking-wider">
-            Шаг {currentIdx + 1} из {STEP_ORDER.length}
-          </span>
-          <span className="text-body-sm text-graphite-50 font-medium">{STEP_LABELS[current]}</span>
+      {/* Header — всегда видно */}
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <p className="text-caption text-chrome uppercase tracking-[0.18em]">
+            Шаг {currentIdx + 1} из {total}
+          </p>
+          <p className="mt-1 font-display text-h5 text-graphite-50">
+            {STEP_LABELS[current]}
+          </p>
         </div>
-        <div className="h-1 w-full bg-graphite-700 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-red-primary transition-all duration-slow ease-emphasized"
-            style={{ width: `${progress}%` }}
-          />
+        <div className="text-right">
+          <p className="text-caption text-chrome uppercase tracking-[0.18em]">Прогресс</p>
+          <p className="mt-1 font-mono tabular-nums text-h5 text-graphite-50 font-semibold">
+            {Math.round(progressPct)}%
+          </p>
         </div>
       </div>
 
-      {/* Desktop: step dots with labels */}
-      <ol className="hidden lg:flex items-center gap-1">
+      {/* Progress bar */}
+      <div className="h-1.5 w-full bg-graphite-700 rounded-full overflow-hidden mb-6">
+        <div
+          className="h-full bg-red-primary transition-all duration-slow ease-emphasized"
+          style={{ width: `${progressPct}%` }}
+        />
+      </div>
+
+      {/* Step dots — только на desktop, читаемые */}
+      <ol className="hidden md:grid grid-cols-6 gap-2">
         {STEP_ORDER.map((step, idx) => {
           const isPast = idx < currentIdx;
           const isCurrent = idx === currentIdx;
           return (
-            <li key={step} className="flex-1 flex items-center gap-3">
-              <div
+            <li
+              key={step}
+              className={cn(
+                "flex flex-col items-center gap-2 text-center px-2 py-3 rounded-md transition-colors",
+                isCurrent && "bg-red-primary/5 border border-red-primary/30",
+                !isCurrent && "border border-transparent"
+              )}
+            >
+              <span
                 className={cn(
-                  "size-8 rounded-full grid place-items-center text-caption font-semibold shrink-0 transition-colors",
+                  "size-7 rounded-full grid place-items-center text-[11px] font-bold shrink-0 transition-colors",
                   isPast && "bg-red-primary text-white",
                   isCurrent && "bg-red-primary text-white shadow-glow-red",
                   !isPast && !isCurrent && "bg-graphite-700 text-graphite-300 border border-graphite-500"
                 )}
               >
-                {isPast ? <Check className="size-4" strokeWidth={3} /> : idx + 1}
-              </div>
-              <div className="flex-1 min-w-0">
-                <p
-                  className={cn(
-                    "text-body-sm font-medium truncate",
-                    isCurrent ? "text-graphite-50" : "text-graphite-300"
-                  )}
-                >
-                  {STEP_LABELS[step]}
-                </p>
-              </div>
-              {idx < STEP_ORDER.length - 1 && (
-                <div
-                  className={cn(
-                    "h-px flex-1 transition-colors",
-                    isPast ? "bg-red-primary" : "bg-graphite-500"
-                  )}
-                />
-              )}
+                {isPast ? <Check className="size-3.5" strokeWidth={3} /> : idx + 1}
+              </span>
+              <span
+                className={cn(
+                  "text-[11px] font-medium leading-tight",
+                  isCurrent ? "text-graphite-50" : isPast ? "text-graphite-200" : "text-graphite-400"
+                )}
+              >
+                {STEP_LABELS[step]}
+              </span>
             </li>
           );
         })}

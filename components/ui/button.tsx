@@ -9,16 +9,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-foreground text-background hover:bg-graphite-100 active:bg-graphite-50 shadow-e-1",
+          "bg-red-primary text-white hover:bg-red-hover active:bg-red-pressed shadow-[0_0_0_1px_rgba(220,38,38,0.5)] hover:shadow-glow-red",
         secondary:
-          "bg-card text-foreground border border-border hover:bg-graphite-700 hover:border-chrome/40 shadow-e-1",
+          "bg-graphite-700 text-graphite-50 border border-graphite-500 hover:bg-graphite-600 hover:border-chrome/30",
         ghost:
-          "text-graphite-100 hover:bg-graphite-700 hover:text-foreground",
+          "text-graphite-100 hover:bg-graphite-700 hover:text-graphite-50",
         outline:
-          "border border-border bg-transparent text-foreground hover:bg-graphite-700 hover:border-chrome",
+          "border border-chrome/30 bg-transparent text-graphite-100 hover:bg-graphite-700 hover:border-chrome/60",
         link: "text-red-primary underline-offset-4 hover:underline",
         destructive:
-          "bg-red-primary text-white hover:bg-red-hover",
+          "bg-error-dark text-white hover:bg-error",
       },
       size: {
         sm: "h-9 px-3 text-xs",

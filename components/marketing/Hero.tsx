@@ -1,188 +1,197 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, ShieldCheck } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { Badge } from "@/components/ui/badge";
 
-/**
- * Warm luxury Hero — Apple/Hermès/Aesop эстетика.
- * Cream background, тонкая серифная типографика, italic-акцент,
- * generous whitespace, минимум декора.
- */
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden">
-      {/* Subtle warm glow — еле заметный */}
+    <section className="relative overflow-hidden pt-12 pb-20 lg:pt-24 lg:pb-32">
       <div
-        className="absolute -top-40 right-0 -z-10 h-[500px] w-[500px] bg-red-glow blur-3xl opacity-50"
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-graphite-900 via-obsidian to-obsidian"
         aria-hidden
       />
       <div
-        className="absolute -bottom-32 -left-20 -z-10 h-[400px] w-[400px] bg-red-glow blur-3xl opacity-30"
+        className="absolute -top-40 right-0 -z-10 h-[600px] w-[600px] bg-red-glow blur-3xl opacity-60"
+        aria-hidden
+      />
+      <div
+        className="absolute -bottom-40 -left-20 -z-10 h-[400px] w-[400px] bg-red-glow blur-3xl opacity-30"
+        aria-hidden
+      />
+
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.04] [background-image:linear-gradient(rgba(192,192,200,1)_1px,transparent_1px),linear-gradient(90deg,rgba(192,192,200,1)_1px,transparent_1px)] [background-size:64px_64px]"
         aria-hidden
       />
 
       <Container>
-        <div className="grid gap-16 lg:grid-cols-12 lg:gap-12 items-center pt-16 pb-24 lg:pt-32 lg:pb-40">
-          {/* Left: editorial text block */}
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8 items-center">
           <div className="lg:col-span-7 relative z-10">
-            <motion.p
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 8 }}
+            <motion.div
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: prefersReducedMotion ? 0.2 : 0.5 }}
-              className="text-label uppercase tracking-[0.25em] text-chrome-deep mb-8 flex items-center gap-3"
+              className="flex flex-wrap items-center gap-3 mb-6"
             >
-              <span className="h-px w-8 bg-chrome-warm" aria-hidden />
-              Основано в 1995
-            </motion.p>
+              <Badge variant="chrome" className="text-[11px]">30 лет в Краснодаре</Badge>
+              <Badge variant="accent" className="text-[11px]">
+                <ShieldCheck className="size-3" />
+                Гарантия на работы
+              </Badge>
+            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: prefersReducedMotion ? 0.2 : 0.7, delay: prefersReducedMotion ? 0 : 0.1 }}
-              className="font-display text-display-xl text-foreground text-balance leading-[0.98]"
+              transition={{ duration: prefersReducedMotion ? 0.2 : 0.6, delay: prefersReducedMotion ? 0 : 0.1 }}
+              className="font-display text-display-xl text-graphite-50 text-balance leading-[0.95]"
             >
               Сервис уровня дилера.
               <br />
-              <span className="font-display italic text-red-primary font-normal">Прозрачно.</span>
+              <span className="text-red-primary">Цены — открыто.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: prefersReducedMotion ? 0.2 : 0.6, delay: prefersReducedMotion ? 0 : 0.25 }}
-              className="mt-8 text-body-lg text-graphite-200 text-pretty max-w-xl leading-relaxed"
+              transition={{ duration: prefersReducedMotion ? 0.2 : 0.6, delay: prefersReducedMotion ? 0 : 0.2 }}
+              className="mt-6 text-body-lg text-graphite-200 text-pretty max-w-xl"
             >
-              Премиум-обслуживание BMW, Mercedes-Benz, Audi, Porsche, Škoda и Volkswagen
-              в Краснодаре. Открытые цены, оригинальные запчасти, дилерское оборудование —
-              в сети из четырёх филиалов.
+              BMW, Mercedes-Benz, Audi, Porsche, Škoda, Volkswagen.
+              {" "}
+              4 филиала, 50 постов одновременного обслуживания, 71&nbsp;000 клиентов с 1995 года.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: prefersReducedMotion ? 0.2 : 0.6, delay: prefersReducedMotion ? 0 : 0.4 }}
-              className="mt-12 flex flex-col sm:flex-row gap-3"
+              transition={{ duration: prefersReducedMotion ? 0.2 : 0.6, delay: prefersReducedMotion ? 0 : 0.3 }}
+              className="mt-10 flex flex-col sm:flex-row gap-3"
             >
               <Button asChild size="xl">
                 <Link href="/booking">
-                  Записаться
+                  Записаться онлайн
                   <ArrowRight className="size-5" />
                 </Link>
               </Button>
-              <Button asChild size="xl" variant="ghost">
+              <Button asChild size="xl" variant="outline">
                 <Link href="#live-price">
-                  Открытый прайс
+                  Прайс на диагностику
                   <ChevronDown className="size-5" />
                 </Link>
               </Button>
             </motion.div>
 
-            {/* Inline stats — тонкая хром-полоска */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: prefersReducedMotion ? 0.2 : 0.8, delay: prefersReducedMotion ? 0 : 0.6 }}
-              className="mt-16 pt-8 border-t border-border flex flex-wrap gap-x-12 gap-y-4 text-body-sm"
+              transition={{ duration: prefersReducedMotion ? 0.2 : 0.8, delay: prefersReducedMotion ? 0 : 0.5 }}
+              className="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-body-sm text-graphite-300"
             >
-              <Stat number="30" label="лет опыта" />
-              <Stat number="4" label="филиала" />
-              <Stat number="50" label="постов" />
-              <Stat number="71 000" label="клиентов" />
+              <div className="flex items-center gap-2">
+                <span className="font-mono tabular-nums text-graphite-50 font-semibold">30</span>
+                <span>лет опыта</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-mono tabular-nums text-graphite-50 font-semibold">4</span>
+                <span>филиала</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-mono tabular-nums text-graphite-50 font-semibold">50</span>
+                <span>постов</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-mono tabular-nums text-graphite-50 font-semibold">71 000</span>
+                <span>клиентов</span>
+              </div>
             </motion.div>
           </div>
 
-          {/* Right: editorial visual — silhouette in warm tones */}
           <div className="lg:col-span-5 relative">
             <motion.div
-              initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.98 }}
+              initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: prefersReducedMotion ? 0.2 : 0.9, delay: prefersReducedMotion ? 0 : 0.3 }}
-              className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-e-3"
+              transition={{ duration: prefersReducedMotion ? 0.2 : 0.8, delay: prefersReducedMotion ? 0 : 0.3 }}
+              className="relative aspect-[5/4] rounded-xl border border-graphite-500/40 bg-gradient-to-br from-graphite-800 to-graphite-900 overflow-hidden shadow-e-3"
             >
-              {/* Cream-toned automotive silhouette */}
               <svg
-                viewBox="0 0 600 750"
+                viewBox="0 0 600 480"
                 className="absolute inset-0 w-full h-full"
                 aria-hidden
-                preserveAspectRatio="xMidYMid slice"
               >
                 <defs>
-                  <linearGradient id="creamFade" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#F8F2E7" stopOpacity="1" />
-                    <stop offset="100%" stopColor="#ECE4D5" stopOpacity="1" />
+                  <linearGradient id="carBody" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#52525C" stopOpacity="0.7" />
+                    <stop offset="50%" stopColor="#2A2A32" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="#0A0A0B" stopOpacity="1" />
                   </linearGradient>
-                  <linearGradient id="carShape" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#5C5247" stopOpacity="0.18" />
-                    <stop offset="100%" stopColor="#1A1612" stopOpacity="0.32" />
+                  <linearGradient id="windowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#C0C0C8" stopOpacity="0.1" />
+                    <stop offset="100%" stopColor="#0A0A0B" stopOpacity="0.4" />
                   </linearGradient>
+                  <radialGradient id="redLight" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#DC2626" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="#DC2626" stopOpacity="0" />
+                  </radialGradient>
                 </defs>
-                <rect width="600" height="750" fill="url(#creamFade)" />
-
-                <g transform="translate(0, 380)">
-                  <ellipse cx="300" cy="240" rx="240" ry="10" fill="#1A1612" opacity="0.15" />
-                  <path
-                    d="M 60 180 L 100 110 Q 130 70 190 60 L 280 35 Q 340 22 410 38 L 500 70 Q 540 85 555 130 L 555 195 Q 555 215 535 215 L 75 215 Q 60 215 60 180 Z"
-                    fill="url(#carShape)"
-                    stroke="#8A8275"
-                    strokeWidth="0.5"
-                    opacity="0.7"
-                  />
-                  <path
-                    d="M 190 60 L 280 38 Q 340 25 410 40 L 480 70 L 460 85 Q 340 65 210 90 Z"
-                    fill="#FAF7F2"
-                    opacity="0.4"
-                  />
-                  <circle cx="170" cy="210" r="32" fill="#1A1612" opacity="0.85" />
-                  <circle cx="170" cy="210" r="14" fill="#5C5247" opacity="0.7" />
-                  <circle cx="430" cy="210" r="32" fill="#1A1612" opacity="0.85" />
-                  <circle cx="430" cy="210" r="14" fill="#5C5247" opacity="0.7" />
-                  <rect x="65" y="155" width="14" height="6" rx="2" fill="#8B2635" opacity="0.5" />
-                </g>
-
-                <text
-                  x="40"
-                  y="50"
-                  fontFamily="Playfair Display, serif"
-                  fontSize="14"
-                  fill="#A89072"
-                  letterSpacing="3"
-                  opacity="0.85"
-                >
-                  KANAVTO · ESTABLISHED MCMXCV
-                </text>
-                <text
-                  x="40"
-                  y="700"
-                  fontFamily="Playfair Display, serif"
-                  fontSize="16"
-                  fontStyle="italic"
-                  fill="#5C5247"
-                  opacity="0.75"
-                >
-                  «Сервис — это форма уважения»
-                </text>
+                <ellipse cx="300" cy="430" rx="240" ry="14" fill="#000" opacity="0.4" />
+                <path
+                  d="M 80 380 L 110 320 Q 130 280 180 270 L 250 240 Q 300 220 360 240 L 460 280 Q 510 290 530 330 L 530 380 Q 530 400 510 400 L 100 400 Q 80 400 80 380 Z"
+                  fill="url(#carBody)"
+                  stroke="#52525C"
+                  strokeWidth="0.5"
+                />
+                <path
+                  d="M 180 270 L 250 245 Q 300 230 360 245 L 440 280 L 415 295 Q 300 270 200 295 Z"
+                  fill="url(#windowGrad)"
+                />
+                <path
+                  d="M 180 270 L 250 245 Q 300 230 360 245 L 440 280"
+                  fill="none"
+                  stroke="#C0C0C8"
+                  strokeWidth="1"
+                  strokeOpacity="0.5"
+                />
+                <circle cx="170" cy="395" r="38" fill="#0A0A0B" stroke="#3A3A44" strokeWidth="2" />
+                <circle cx="170" cy="395" r="20" fill="#1F1F25" stroke="#52525C" strokeWidth="1" />
+                <circle cx="430" cy="395" r="38" fill="#0A0A0B" stroke="#3A3A44" strokeWidth="2" />
+                <circle cx="430" cy="395" r="20" fill="#1F1F25" stroke="#52525C" strokeWidth="1" />
+                <circle cx="100" cy="345" r="40" fill="url(#redLight)" />
+                <rect x="80" y="340" width="20" height="10" rx="2" fill="#DC2626" opacity="0.8" />
+                <rect x="510" y="335" width="18" height="8" rx="2" fill="#C0C0C8" opacity="0.7" />
               </svg>
 
-              {/* Warm gold hairline */}
-              <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-chrome-warm/40 to-transparent" />
+              <div className="absolute top-6 right-6 flex items-center gap-2 px-3 py-1.5 rounded border border-chrome/30 bg-graphite-900/60 backdrop-blur-sm">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-chrome">Specialised in</span>
+                <span className="font-display text-h6 text-graphite-50">BMW · MB · Porsche</span>
+              </div>
+
+              <div className="absolute bottom-0 inset-x-0 hairline" />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: prefersReducedMotion ? 0 : 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: prefersReducedMotion ? 0.2 : 0.7, delay: prefersReducedMotion ? 0 : 0.6 }}
+              className="absolute -bottom-6 -left-6 lg:-left-12 hidden md:flex items-center gap-3 px-4 py-3 rounded-lg border border-graphite-500/40 bg-graphite-800/95 backdrop-blur-sm shadow-e-3"
+            >
+              <div className="size-10 rounded-md bg-success/10 grid place-items-center">
+                <ShieldCheck className="size-5 text-success" />
+              </div>
+              <div>
+                <p className="text-caption text-chrome">Гарантия 30 дней</p>
+                <p className="text-body-sm font-semibold text-graphite-50">на корректность диагноза</p>
+              </div>
             </motion.div>
           </div>
         </div>
       </Container>
     </section>
-  );
-}
-
-function Stat({ number, label }: { number: string; label: string }) {
-  return (
-    <div className="flex items-baseline gap-2">
-      <span className="font-display tabular-nums text-foreground text-h6 font-semibold">{number}</span>
-      <span className="text-graphite-200 text-body-sm">{label}</span>
-    </div>
   );
 }

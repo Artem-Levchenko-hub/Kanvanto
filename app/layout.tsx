@@ -62,8 +62,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FAF7F2" },
-    { media: "(prefers-color-scheme: dark)", color: "#1A1612" },
+    { media: "(prefers-color-scheme: light)", color: "#F8F8FA" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0A0B" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -84,17 +84,17 @@ export default function RootLayout({
         <NextAuthSessionProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="light"
+            defaultTheme="dark"
             enableSystem={false}
             disableTransitionOnChange
           >
             {children}
             <Toaster
               position="top-right"
-              theme="light"
+              theme="dark"
               toastOptions={{
                 classNames: {
-                  toast: "bg-card border-border text-foreground shadow-e-2",
+                  toast: "bg-graphite-700 border-graphite-500 text-graphite-50",
                 },
               }}
             />

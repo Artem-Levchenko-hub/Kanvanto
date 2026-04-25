@@ -13,7 +13,6 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Базовые semantic-токены (через CSS-переменные)
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -48,76 +47,69 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
 
-        // Warm cream "обсидиан" — теперь это ivory, основной background
-        obsidian: "#FAF7F2",
-        // graphite сохранил название, но это инвертированная warm-light шкала
-        // от cream (50) до deep ink (900)
+        obsidian: "#0A0A0B",
         graphite: {
-          50: "#1A1612",   // deep ink (was lightest, теперь darkest text)
-          100: "#3F3A33",  // body text
-          200: "#5C5247",  // secondary text
-          300: "#6B6359",  // muted text
-          400: "#8A8275",  // tertiary text
-          500: "#C2B8A8",  // medium border (warm)
-          600: "#E0D7C8",  // soft border / hover bg
-          700: "#ECE4D5",  // light cream surface (was darkest, теперь lightest cream)
-          800: "#F4EDE0",  // very light cream
-          900: "#F8F2E7",  // almost ivory
+          900: "#111114",
+          800: "#17171B",
+          700: "#1F1F25",
+          600: "#2A2A32",
+          500: "#3A3A44",
+          400: "#52525C",
+          300: "#6E6E76",
+          200: "#A8A8B0",
+          100: "#D4D4DC",
+          50: "#F5F5F7",
         },
 
-        // Wine accent (вместо красного — более изысканный oxblood)
         red: {
-          primary: "#8B2635",
-          hover: "#A8395A",
-          pressed: "#691E2A",
-          glow: "rgba(139, 38, 53, 0.15)",
-          tint: "rgba(139, 38, 53, 0.06)",
+          primary: "#DC2626",
+          hover: "#EF4444",
+          pressed: "#B91C1C",
+          glow: "rgba(220, 38, 38, 0.18)",
+          tint: "rgba(220, 38, 38, 0.08)",
         },
 
-        // Warm gold — заменяет chrome
         chrome: {
-          DEFAULT: "#A89072",   // muted warm gold
-          warm: "#C19A6B",      // warmer gold
-          deep: "#6B5D44",      // deeper bronze
+          DEFAULT: "#C0C0C8",
+          warm: "#D4D4DC",
+          deep: "#7A7A82",
         },
 
-        // Status — приглушённые luxury-варианты
         success: {
-          DEFAULT: "#5C8A6B",
-          dark: "#3F6B4E",
+          DEFAULT: "#34D399",
+          dark: "#059669",
         },
         warning: {
-          DEFAULT: "#B8851A",
-          dark: "#8C6611",
+          DEFAULT: "#FBBF24",
+          dark: "#D97706",
         },
         error: {
-          DEFAULT: "#A8395A",
-          dark: "#8B2635",
+          DEFAULT: "#F87171",
+          dark: "#DC2626",
         },
         info: {
-          DEFAULT: "#5479A8",
-          dark: "#3F5C82",
+          DEFAULT: "#60A5FA",
+          dark: "#2563EB",
         },
       },
       fontFamily: {
         display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "var(--font-jost)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       fontSize: {
-        // Mobile / desktop типография — slightly increased for editorial feel
-        "display-xl": ["clamp(3rem, 6vw + 1rem, 6.5rem)", { lineHeight: "1.02", letterSpacing: "-0.035em", fontWeight: "500" }],
-        "h1": ["clamp(2.25rem, 3.5vw + 1rem, 4.5rem)", { lineHeight: "1.05", letterSpacing: "-0.025em", fontWeight: "500" }],
-        "h2": ["clamp(1.75rem, 2.5vw + 0.5rem, 3.25rem)", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "500" }],
-        "h3": ["clamp(1.5rem, 1.5vw + 0.5rem, 2.25rem)", { lineHeight: "1.15", letterSpacing: "-0.015em", fontWeight: "500" }],
-        "h4": ["clamp(1.25rem, 1vw + 0.5rem, 1.625rem)", { lineHeight: "1.25", letterSpacing: "-0.01em", fontWeight: "500" }],
-        "h5": ["1.25rem", { lineHeight: "1.35", letterSpacing: "-0.005em", fontWeight: "500" }],
-        "h6": ["1.125rem", { lineHeight: "1.4", fontWeight: "500" }],
-        "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
-        "body-base": ["1rem", { lineHeight: "1.65", fontWeight: "400" }],
-        "body-sm": ["0.875rem", { lineHeight: "1.6", fontWeight: "400" }],
-        "caption": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.02em", fontWeight: "500" }],
-        "label": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.18em", fontWeight: "500" }],
+        "display-xl": ["clamp(3rem, 5vw + 1rem, 5.5rem)", { lineHeight: "1.05", letterSpacing: "-0.03em", fontWeight: "600" }],
+        "h1": ["clamp(2.25rem, 3vw + 1rem, 4rem)", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
+        "h2": ["clamp(1.75rem, 2.5vw + 0.5rem, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.015em", fontWeight: "500" }],
+        "h3": ["clamp(1.5rem, 1.5vw + 0.5rem, 2rem)", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "500" }],
+        "h4": ["clamp(1.25rem, 1vw + 0.5rem, 1.5rem)", { lineHeight: "1.3", fontWeight: "600" }],
+        "h5": ["1.25rem", { lineHeight: "1.4", fontWeight: "600" }],
+        "h6": ["1.125rem", { lineHeight: "1.45", fontWeight: "500" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.65", fontWeight: "400" }],
+        "body-base": ["1rem", { lineHeight: "1.6", fontWeight: "400" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.55", fontWeight: "400" }],
+        "caption": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.01em", fontWeight: "500" }],
+        "label": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.08em", fontWeight: "600" }],
         "mono": ["0.875rem", { lineHeight: "1.5", fontWeight: "400" }],
       },
       spacing: {
@@ -133,22 +125,20 @@ const config: Config = {
         "32": "128px",
       },
       borderRadius: {
-        sm: "2px",
-        DEFAULT: "4px",
-        md: "8px",
-        lg: "12px",
-        xl: "20px",
+        sm: "4px",
+        DEFAULT: "8px",
+        md: "12px",
+        lg: "16px",
+        xl: "24px",
       },
       boxShadow: {
-        // Soft Apple-style shadows
-        "e-1": "0 1px 2px rgba(26, 22, 18, 0.04), 0 0 0 1px rgba(26, 22, 18, 0.04)",
-        "e-2": "0 4px 16px rgba(26, 22, 18, 0.06), 0 0 0 1px rgba(26, 22, 18, 0.04)",
-        "e-3": "0 12px 36px rgba(26, 22, 18, 0.08), 0 0 0 1px rgba(26, 22, 18, 0.04)",
-        "e-4": "0 24px 72px rgba(26, 22, 18, 0.12), 0 0 0 1px rgba(26, 22, 18, 0.05)",
-        // Glow
-        "glow-red": "0 0 0 4px rgba(139, 38, 53, 0.12)",
-        "glow-chrome": "0 0 0 1px rgba(168, 144, 114, 0.16)",
-        "inner-highlight": "inset 0 1px 0 rgba(255, 255, 255, 0.6)",
+        "e-1": "0 1px 2px rgba(10, 10, 11, 0.06)",
+        "e-2": "0 4px 12px rgba(10, 10, 11, 0.08)",
+        "e-3": "0 12px 32px rgba(10, 10, 11, 0.12)",
+        "e-4": "0 24px 64px rgba(10, 10, 11, 0.18)",
+        "glow-red": "0 0 0 4px rgba(220, 38, 38, 0.18)",
+        "glow-chrome": "0 0 0 1px rgba(192, 192, 200, 0.12)",
+        "inner-highlight": "inset 0 1px 0 rgba(255, 255, 255, 0.04)",
       },
       transitionDuration: {
         instant: "100ms",
@@ -185,8 +175,8 @@ const config: Config = {
           "50%": { backgroundPosition: "-200% 0" },
         },
         "pulse-red": {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(139, 38, 53, 0.3)" },
-          "50%": { boxShadow: "0 0 0 8px rgba(139, 38, 53, 0)" },
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(220, 38, 38, 0.4)" },
+          "50%": { boxShadow: "0 0 0 8px rgba(220, 38, 38, 0)" },
         },
         "marquee": {
           from: { transform: "translateX(0)" },
@@ -203,12 +193,9 @@ const config: Config = {
         "marquee": "marquee 30s linear infinite",
       },
       backgroundImage: {
-        // Cream warm gradient (заменяет graphite-fade)
-        "graphite-fade": "linear-gradient(180deg, #FAF7F2 0%, #F4EDE0 100%)",
-        // Soft warm glow (заменяет red-glow)
-        "red-glow": "radial-gradient(circle at center, rgba(193, 154, 107, 0.18) 0%, transparent 70%)",
-        // Hairline gold
-        "chrome-line": "linear-gradient(90deg, transparent 0%, #C19A6B 50%, transparent 100%)",
+        "graphite-fade": "linear-gradient(180deg, #0A0A0B 0%, #17171B 100%)",
+        "red-glow": "radial-gradient(circle at center, rgba(220, 38, 38, 0.16) 0%, transparent 70%)",
+        "chrome-line": "linear-gradient(90deg, transparent 0%, #C0C0C8 50%, transparent 100%)",
       },
     },
   },
