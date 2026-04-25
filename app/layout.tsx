@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import { NextAuthSessionProvider } from "@/components/providers/SessionProvider";
@@ -8,11 +8,13 @@ import { PWARegister } from "@/components/PWARegister";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/constants";
 import "./globals.css";
 
-const display = Playfair_Display({
+// Apple-style: Inter с очень тонкими весами для display, обычные для body.
+// Используется одна семья шрифта, но с разной тонкостью — это даёт
+// крупный, почти прозрачный display и читаемый body.
+const display = Inter({
   subsets: ["latin", "cyrillic"],
   variable: "--font-display",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
   display: "swap",
 });
 

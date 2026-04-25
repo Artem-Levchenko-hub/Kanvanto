@@ -1,8 +1,10 @@
 import { HeroAB } from "@/components/marketing/HeroAB";
 import { BrandsStrip } from "@/components/marketing/BrandsStrip";
 import { UspStats } from "@/components/marketing/UspStats";
+import { StickyShowcase } from "@/components/marketing/StickyShowcase";
 import { ServicesGrid } from "@/components/marketing/ServicesGrid";
 import { LivePriceSection } from "@/components/marketing/LivePriceSection";
+import { FullBleedShowcase } from "@/components/marketing/FullBleedShowcase";
 import { BeforeAfterCases } from "@/components/marketing/BeforeAfterCases";
 import { EquipmentCarousel } from "@/components/marketing/EquipmentCarousel";
 import { TeamSection } from "@/components/marketing/TeamSection";
@@ -18,8 +20,10 @@ export default function HomePage() {
       <HeroAB />
       <BrandsStrip />
       <UspStats />
+      <StickyShowcase />
       <ServicesGrid />
       <LivePriceSection />
+      <FullBleedShowcase />
       <BeforeAfterCases />
       <EquipmentCarousel />
       <TeamSection />
