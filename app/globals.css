@@ -3,50 +3,54 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    /* Light theme defaults */
-    --background: 240 10% 97%;
-    --foreground: 240 6% 5%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 6% 5%;
+  /*
+   * Warm light luxury theme by default (Hermès ivory + oxblood + warm gold).
+   * Класс .dark — для опционального тёмного режима в будущем.
+   */
+  :root,
+  .light {
+    --background: 36 33% 97%;             /* #FAF7F2 ivory */
+    --foreground: 30 16% 9%;              /* #1A1612 deep ink */
+    --card: 0 0% 100%;                    /* #FFFFFF pure surface */
+    --card-foreground: 30 16% 9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 6% 5%;
-    --primary: 0 72% 51%;
+    --popover-foreground: 30 16% 9%;
+    --primary: 351 39% 35%;               /* #8B2635 oxblood wine */
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 95%;
-    --secondary-foreground: 240 6% 14%;
-    --muted: 240 5% 95%;
-    --muted-foreground: 240 4% 42%;
-    --accent: 240 5% 92%;
-    --accent-foreground: 240 6% 14%;
-    --destructive: 0 72% 51%;
+    --secondary: 36 32% 92%;              /* #F0EBE3 warm cream */
+    --secondary-foreground: 30 14% 22%;
+    --muted: 35 30% 89%;                  /* #E8DFD3 warm muted */
+    --muted-foreground: 32 12% 35%;       /* warm gray */
+    --accent: 30 30% 60%;                 /* #C19A6B warm gold */
+    --accent-foreground: 30 16% 9%;
+    --destructive: 351 39% 35%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 6% 90%;
-    --input: 240 6% 88%;
-    --ring: 0 72% 51%;
+    --border: 34 26% 84%;                 /* #E5DED2 ivory border */
+    --input: 34 26% 84%;
+    --ring: 351 39% 35%;
   }
 
   .dark {
-    /* Графитовая dark theme — основная */
-    --background: 240 6% 5%;          /* #0A0A0B obsidian */
-    --foreground: 240 11% 96%;        /* #F5F5F7 */
-    --card: 240 8% 8%;                /* graphite-900 */
-    --card-foreground: 240 11% 96%;
-    --popover: 240 11% 12%;           /* graphite-700 */
-    --popover-foreground: 240 11% 96%;
-    --primary: 0 72% 51%;             /* #DC2626 */
+    /* Dark mode (опциональный) — глубокий warm-graphite */
+    --background: 30 16% 9%;
+    --foreground: 36 33% 97%;
+    --card: 30 14% 12%;
+    --card-foreground: 36 33% 97%;
+    --popover: 30 14% 14%;
+    --popover-foreground: 36 33% 97%;
+    --primary: 351 50% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 11% 14%;         /* graphite-700 */
-    --secondary-foreground: 240 11% 96%;
-    --muted: 240 11% 11%;
-    --muted-foreground: 240 5% 65%;   /* #A8A8B0 */
-    --accent: 240 11% 18%;            /* graphite-600 */
-    --accent-foreground: 240 11% 96%;
-    --destructive: 0 84% 60%;
+    --secondary: 30 12% 20%;
+    --secondary-foreground: 36 33% 97%;
+    --muted: 30 12% 18%;
+    --muted-foreground: 30 12% 65%;
+    --accent: 30 30% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 351 50% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 8% 24%;             /* graphite-500 */
-    --input: 240 8% 24%;
-    --ring: 0 72% 51%;
+    --border: 30 12% 24%;
+    --input: 30 12% 24%;
+    --ring: 351 50% 55%;
   }
 
   * {
@@ -65,27 +69,27 @@
     font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
   }
 
-  /* Tabular цифры в моно — для VIN, цен в таблицах */
+  /* Tabular цифры */
   .font-mono,
   [class*="tabular-nums"] {
     font-feature-settings: "tnum" 1, "calt" 0;
   }
 
-  /* Selection */
+  /* Editorial selection */
   ::selection {
-    background-color: rgba(220, 38, 38, 0.35);
-    color: #ffffff;
+    background-color: rgba(139, 38, 53, 0.15);
+    color: #1A1612;
   }
 
-  /* Focus-visible — кастомный red ring */
+  /* Focus-visible — warm wine ring */
   *:focus-visible {
     @apply outline-none ring-2 ring-red-primary ring-offset-2 ring-offset-background;
   }
 
-  /* Scrollbar (только webkit) */
+  /* Scrollbar — warm ivory */
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
   }
 
   ::-webkit-scrollbar-track {
@@ -93,13 +97,13 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
+    background: #E0D7C8;
     border-radius: 999px;
-    border: 2px solid hsl(var(--background));
+    border: 3px solid #FAF7F2;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground));
+    background: #C2B8A8;
   }
 }
 
@@ -112,18 +116,18 @@
     text-wrap: pretty;
   }
 
-  /* Hairline border (премиум-разделитель) */
+  /* Hairline border (warm gold) */
   .hairline {
-    background: linear-gradient(90deg, transparent 0%, rgba(192, 192, 200, 0.2) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(193, 154, 107, 0.4) 50%, transparent 100%);
     height: 1px;
   }
 
-  /* Dark surface levels */
-  .surface-1 { background-color: #17171B; }
-  .surface-2 { background-color: #1F1F25; }
-  .surface-3 { background-color: #2A2A32; }
+  /* Light surface levels (warm cream) */
+  .surface-1 { background-color: #FFFFFF; }
+  .surface-2 { background-color: #F4EDE0; }
+  .surface-3 { background-color: #ECE4D5; }
 
-  /* Container с max-w 1280 на 2xl */
+  /* Container */
   .container-px {
     @apply mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8;
   }
@@ -135,6 +139,17 @@
 
   .section-py-lg {
     @apply py-24 lg:py-32;
+  }
+
+  /* Editorial paragraph drop-cap (опционально для luxury vibe) */
+  .drop-cap::first-letter {
+    font-family: var(--font-display), serif;
+    font-size: 4em;
+    line-height: 0.85;
+    float: left;
+    margin-right: 0.1em;
+    margin-top: 0.05em;
+    color: #8B2635;
   }
 }
 
@@ -149,14 +164,12 @@
     scroll-behavior: auto !important;
   }
 
-  /* Полностью отключить параллаксы и pulsate */
   [data-parallax],
   [data-pulsate] {
     animation: none !important;
     transform: none !important;
   }
 
-  /* Count-up — instant set */
   [data-countup] {
     animation: none !important;
   }

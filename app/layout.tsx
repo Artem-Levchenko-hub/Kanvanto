@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Jost, JetBrains_Mono } from "next/font/google";
+import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import { NextAuthSessionProvider } from "@/components/providers/SessionProvider";
@@ -11,13 +11,14 @@ import "./globals.css";
 const display = Playfair_Display({
   subsets: ["latin", "cyrillic"],
   variable: "--font-display",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const jost = Jost({
+const sans = Inter({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-jost",
+  variable: "--font-sans",
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     title: SITE_NAME,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
   },
   icons: {
     icon: [
@@ -61,8 +62,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F8F8FA" },
-    { media: "(prefers-color-scheme: dark)", color: "#0A0A0B" },
+    { media: "(prefers-color-scheme: light)", color: "#FAF7F2" },
+    { media: "(prefers-color-scheme: dark)", color: "#1A1612" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -77,23 +78,23 @@ export default function RootLayout({
     <html
       lang="ru"
       suppressHydrationWarning
-      className={`${display.variable} ${jost.variable} ${jetbrains.variable}`}
+      className={`${display.variable} ${sans.variable} ${jetbrains.variable}`}
     >
       <body className="min-h-dvh bg-background text-foreground antialiased">
         <NextAuthSessionProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem={false}
             disableTransitionOnChange
           >
             {children}
             <Toaster
               position="top-right"
-              theme="dark"
+              theme="light"
               toastOptions={{
                 classNames: {
-                  toast: "bg-graphite-700 border-graphite-500 text-graphite-50",
+                  toast: "bg-card border-border text-foreground shadow-e-2",
                 },
               }}
             />

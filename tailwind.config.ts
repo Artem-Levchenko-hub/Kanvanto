@@ -48,74 +48,76 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
 
-        // Графитовая шкала (бренд)
-        obsidian: "#0A0A0B",
+        // Warm cream "обсидиан" — теперь это ivory, основной background
+        obsidian: "#FAF7F2",
+        // graphite сохранил название, но это инвертированная warm-light шкала
+        // от cream (50) до deep ink (900)
         graphite: {
-          900: "#111114",
-          800: "#17171B",
-          700: "#1F1F25",
-          600: "#2A2A32",
-          500: "#3A3A44",
-          400: "#52525C",
-          300: "#6E6E76",
-          200: "#A8A8B0",
-          100: "#D4D4DC",
-          50: "#F5F5F7",
+          50: "#1A1612",   // deep ink (was lightest, теперь darkest text)
+          100: "#3F3A33",  // body text
+          200: "#5C5247",  // secondary text
+          300: "#6B6359",  // muted text
+          400: "#8A8275",  // tertiary text
+          500: "#C2B8A8",  // medium border (warm)
+          600: "#E0D7C8",  // soft border / hover bg
+          700: "#ECE4D5",  // light cream surface (was darkest, теперь lightest cream)
+          800: "#F4EDE0",  // very light cream
+          900: "#F8F2E7",  // almost ivory
         },
 
-        // Красный акцент
+        // Wine accent (вместо красного — более изысканный oxblood)
         red: {
-          primary: "#DC2626",
-          hover: "#EF4444",
-          pressed: "#B91C1C",
-          glow: "rgba(220, 38, 38, 0.18)",
-          tint: "rgba(220, 38, 38, 0.08)",
+          primary: "#8B2635",
+          hover: "#A8395A",
+          pressed: "#691E2A",
+          glow: "rgba(139, 38, 53, 0.15)",
+          tint: "rgba(139, 38, 53, 0.06)",
         },
 
-        // Хром
+        // Warm gold — заменяет chrome
         chrome: {
-          DEFAULT: "#C0C0C8",
-          warm: "#D4D4DC",
-          deep: "#7A7A82",
+          DEFAULT: "#A89072",   // muted warm gold
+          warm: "#C19A6B",      // warmer gold
+          deep: "#6B5D44",      // deeper bronze
         },
 
-        // Status (с иконкой, не цветом одним)
+        // Status — приглушённые luxury-варианты
         success: {
-          DEFAULT: "#34D399",
-          dark: "#059669",
+          DEFAULT: "#5C8A6B",
+          dark: "#3F6B4E",
         },
         warning: {
-          DEFAULT: "#FBBF24",
-          dark: "#D97706",
+          DEFAULT: "#B8851A",
+          dark: "#8C6611",
         },
         error: {
-          DEFAULT: "#F87171",
-          dark: "#DC2626",
+          DEFAULT: "#A8395A",
+          dark: "#8B2635",
         },
         info: {
-          DEFAULT: "#60A5FA",
-          dark: "#2563EB",
+          DEFAULT: "#5479A8",
+          dark: "#3F5C82",
         },
       },
       fontFamily: {
         display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],
-        sans: ["var(--font-jost)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "var(--font-jost)", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       fontSize: {
-        // Mobile / desktop типография
-        "display-xl": ["clamp(3rem, 5vw + 1rem, 5.5rem)", { lineHeight: "1.05", letterSpacing: "-0.03em", fontWeight: "600" }],
-        "h1": ["clamp(2.25rem, 3vw + 1rem, 4rem)", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
-        "h2": ["clamp(1.75rem, 2.5vw + 0.5rem, 3rem)", { lineHeight: "1.15", letterSpacing: "-0.015em", fontWeight: "500" }],
-        "h3": ["clamp(1.5rem, 1.5vw + 0.5rem, 2rem)", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "500" }],
-        "h4": ["clamp(1.25rem, 1vw + 0.5rem, 1.5rem)", { lineHeight: "1.3", fontWeight: "600" }],
-        "h5": ["1.25rem", { lineHeight: "1.4", fontWeight: "600" }],
-        "h6": ["1.125rem", { lineHeight: "1.45", fontWeight: "500" }],
-        "body-lg": ["1.125rem", { lineHeight: "1.65", fontWeight: "400" }],
-        "body-base": ["1rem", { lineHeight: "1.6", fontWeight: "400" }],
-        "body-sm": ["0.875rem", { lineHeight: "1.55", fontWeight: "400" }],
-        "caption": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.01em", fontWeight: "500" }],
-        "label": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.08em", fontWeight: "600" }],
+        // Mobile / desktop типография — slightly increased for editorial feel
+        "display-xl": ["clamp(3rem, 6vw + 1rem, 6.5rem)", { lineHeight: "1.02", letterSpacing: "-0.035em", fontWeight: "500" }],
+        "h1": ["clamp(2.25rem, 3.5vw + 1rem, 4.5rem)", { lineHeight: "1.05", letterSpacing: "-0.025em", fontWeight: "500" }],
+        "h2": ["clamp(1.75rem, 2.5vw + 0.5rem, 3.25rem)", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "500" }],
+        "h3": ["clamp(1.5rem, 1.5vw + 0.5rem, 2.25rem)", { lineHeight: "1.15", letterSpacing: "-0.015em", fontWeight: "500" }],
+        "h4": ["clamp(1.25rem, 1vw + 0.5rem, 1.625rem)", { lineHeight: "1.25", letterSpacing: "-0.01em", fontWeight: "500" }],
+        "h5": ["1.25rem", { lineHeight: "1.35", letterSpacing: "-0.005em", fontWeight: "500" }],
+        "h6": ["1.125rem", { lineHeight: "1.4", fontWeight: "500" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.7", fontWeight: "400" }],
+        "body-base": ["1rem", { lineHeight: "1.65", fontWeight: "400" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.6", fontWeight: "400" }],
+        "caption": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.02em", fontWeight: "500" }],
+        "label": ["0.75rem", { lineHeight: "1.4", letterSpacing: "0.18em", fontWeight: "500" }],
         "mono": ["0.875rem", { lineHeight: "1.5", fontWeight: "400" }],
       },
       spacing: {
@@ -131,22 +133,22 @@ const config: Config = {
         "32": "128px",
       },
       borderRadius: {
-        sm: "4px",
-        DEFAULT: "8px",
-        md: "12px",
-        lg: "16px",
-        xl: "24px",
+        sm: "2px",
+        DEFAULT: "4px",
+        md: "8px",
+        lg: "12px",
+        xl: "20px",
       },
       boxShadow: {
-        // Light theme — реальные тени
-        "e-1": "0 1px 2px rgba(10, 10, 11, 0.06)",
-        "e-2": "0 4px 12px rgba(10, 10, 11, 0.08)",
-        "e-3": "0 12px 32px rgba(10, 10, 11, 0.12)",
-        "e-4": "0 24px 64px rgba(10, 10, 11, 0.18)",
+        // Soft Apple-style shadows
+        "e-1": "0 1px 2px rgba(26, 22, 18, 0.04), 0 0 0 1px rgba(26, 22, 18, 0.04)",
+        "e-2": "0 4px 16px rgba(26, 22, 18, 0.06), 0 0 0 1px rgba(26, 22, 18, 0.04)",
+        "e-3": "0 12px 36px rgba(26, 22, 18, 0.08), 0 0 0 1px rgba(26, 22, 18, 0.04)",
+        "e-4": "0 24px 72px rgba(26, 22, 18, 0.12), 0 0 0 1px rgba(26, 22, 18, 0.05)",
         // Glow
-        "glow-red": "0 0 0 4px rgba(220, 38, 38, 0.18)",
-        "glow-chrome": "0 0 0 1px rgba(192, 192, 200, 0.12)",
-        "inner-highlight": "inset 0 1px 0 rgba(255, 255, 255, 0.04)",
+        "glow-red": "0 0 0 4px rgba(139, 38, 53, 0.12)",
+        "glow-chrome": "0 0 0 1px rgba(168, 144, 114, 0.16)",
+        "inner-highlight": "inset 0 1px 0 rgba(255, 255, 255, 0.6)",
       },
       transitionDuration: {
         instant: "100ms",
@@ -156,10 +158,10 @@ const config: Config = {
         grand: "600ms",
       },
       transitionTimingFunction: {
-        "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
-        "entrance": "cubic-bezier(0.0, 0, 0.2, 1)",
-        "exit": "cubic-bezier(0.4, 0, 1, 1)",
-        "emphasized": "cubic-bezier(0.2, 0, 0, 1)",
+        standard: "cubic-bezier(0.4, 0, 0.2, 1)",
+        entrance: "cubic-bezier(0.0, 0, 0.2, 1)",
+        exit: "cubic-bezier(0.4, 0, 1, 1)",
+        emphasized: "cubic-bezier(0.2, 0, 0, 1)",
       },
       keyframes: {
         "accordion-down": {
@@ -183,8 +185,8 @@ const config: Config = {
           "50%": { backgroundPosition: "-200% 0" },
         },
         "pulse-red": {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(220, 38, 38, 0.4)" },
-          "50%": { boxShadow: "0 0 0 8px rgba(220, 38, 38, 0)" },
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(139, 38, 53, 0.3)" },
+          "50%": { boxShadow: "0 0 0 8px rgba(139, 38, 53, 0)" },
         },
         "marquee": {
           from: { transform: "translateX(0)" },
@@ -201,9 +203,12 @@ const config: Config = {
         "marquee": "marquee 30s linear infinite",
       },
       backgroundImage: {
-        "graphite-fade": "linear-gradient(180deg, #0A0A0B 0%, #17171B 100%)",
-        "red-glow": "radial-gradient(circle at center, rgba(220, 38, 38, 0.16) 0%, transparent 70%)",
-        "chrome-line": "linear-gradient(90deg, transparent 0%, #C0C0C8 50%, transparent 100%)",
+        // Cream warm gradient (заменяет graphite-fade)
+        "graphite-fade": "linear-gradient(180deg, #FAF7F2 0%, #F4EDE0 100%)",
+        // Soft warm glow (заменяет red-glow)
+        "red-glow": "radial-gradient(circle at center, rgba(193, 154, 107, 0.18) 0%, transparent 70%)",
+        // Hairline gold
+        "chrome-line": "linear-gradient(90deg, transparent 0%, #C19A6B 50%, transparent 100%)",
       },
     },
   },
