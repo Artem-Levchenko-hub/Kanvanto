@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme defaults */
+    --background: 240 10% 97%;
+    --foreground: 240 6% 5%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 6% 5%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 5%;
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 95%;
+    --secondary-foreground: 240 6% 14%;
+    --muted: 240 5% 95%;
+    --muted-foreground: 240 4% 42%;
+    --accent: 240 5% 92%;
+    --accent-foreground: 240 6% 14%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 88%;
+    --ring: 0 72% 51%;
+  }
+
+  .dark {
+    /* Графитовая dark theme — основная */
+    --background: 240 6% 5%;          /* #0A0A0B obsidian */
+    --foreground: 240 11% 96%;        /* #F5F5F7 */
+    --card: 240 8% 8%;                /* graphite-900 */
+    --card-foreground: 240 11% 96%;
+    --popover: 240 11% 12%;           /* graphite-700 */
+    --popover-foreground: 240 11% 96%;
+    --primary: 0 72% 51%;             /* #DC2626 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 11% 14%;         /* graphite-700 */
+    --secondary-foreground: 240 11% 96%;
+    --muted: 240 11% 11%;
+    --muted-foreground: 240 5% 65%;   /* #A8A8B0 */
+    --accent: 240 11% 18%;            /* graphite-600 */
+    --accent-foreground: 240 11% 96%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 8% 24%;             /* graphite-500 */
+    --input: 240 8% 24%;
+    --ring: 0 72% 51%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+  }
+
+  /* Tabular цифры в моно — для VIN, цен в таблицах */
+  .font-mono,
+  [class*="tabular-nums"] {
+    font-feature-settings: "tnum" 1, "calt" 0;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(220, 38, 38, 0.35);
+    color: #ffffff;
+  }
+
+  /* Focus-visible — кастомный red ring */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-red-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* Scrollbar (только webkit) */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+    border: 2px solid hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Hairline border (премиум-разделитель) */
+  .hairline {
+    background: linear-gradient(90deg, transparent 0%, rgba(192, 192, 200, 0.2) 50%, transparent 100%);
+    height: 1px;
+  }
+
+  /* Dark surface levels */
+  .surface-1 { background-color: #17171B; }
+  .surface-2 { background-color: #1F1F25; }
+  .surface-3 { background-color: #2A2A32; }
+
+  /* Container с max-w 1280 на 2xl */
+  .container-px {
+    @apply mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section padding */
+  .section-py {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-py-lg {
+    @apply py-24 lg:py-32;
+  }
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 200ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 200ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Полностью отключить параллаксы и pulsate */
+  [data-parallax],
+  [data-pulsate] {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Count-up — instant set */
+  [data-countup] {
+    animation: none !important;
+  }
+}
